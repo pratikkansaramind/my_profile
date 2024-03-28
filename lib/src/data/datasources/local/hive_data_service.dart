@@ -89,7 +89,17 @@ class HiveDataService implements HiveDataServiceRepository {
   UserDetailsModel fetchLoggedInUser() {
     final users = _hiveDataRepository.getAllEntity() ?? [];
 
-    return users.firstWhere((element) => element.isLoggedIn);
+    return users.firstWhere((element) => element.isLoggedIn,
+        orElse: () => UserDetailsModel(
+              email: '',
+              password: '',
+              image: '',
+              name: '',
+              skills: [],
+              workExp: [],
+              isLoggedIn: false,
+              rememberMe: false,
+            ));
   }
 
   @override

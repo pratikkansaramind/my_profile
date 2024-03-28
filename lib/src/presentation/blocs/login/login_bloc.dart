@@ -25,10 +25,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _moveToPassword(MoveToPasswordEvent event, Emitter<LoginState> emit) {
+    UserDetailsModel? userDetailsModel =
+        hiveDataServiceRepo.fetchUser(email: state.email);
+
     emit(MoveToPasswordState(
       email: state.email,
       password: state.password,
-      rememberMe: state.rememberMe,
+      rememberMe: userDetailsModel?.rememberMe ?? state.rememberMe,
       showPassword: state.showPassword,
     ));
   }
