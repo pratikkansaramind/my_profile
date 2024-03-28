@@ -62,7 +62,9 @@ class _EditNamePageState extends State<EditNamePage> {
         builder: (context, state) {
           return Form(
             onWillPop: () {
-              if (state is UpdateNameState || state is InitialDetailsState) {
+              if (widget.name.trim().isEmpty ||
+                  state is UpdateNameState ||
+                  state is InitialDetailsState) {
                 return Future.value(true);
               }
 

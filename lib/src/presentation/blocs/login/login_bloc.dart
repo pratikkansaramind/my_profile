@@ -143,6 +143,7 @@ Password must contain:
         });
 
         add(UpdateRememberMeEvent(rememberMe: false));
+        add(ShowPasswordEvent(show: false));
       } else {
         emit(InvalidCredentialState(
           email: email,
@@ -181,6 +182,7 @@ Password must contain:
         ));
 
         add(UpdateRememberMeEvent(rememberMe: false));
+        add(ShowPasswordEvent(show: false));
       });
     }
   }
