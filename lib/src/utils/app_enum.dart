@@ -1,0 +1,1 @@
+enum BoxKey { userData, skills }
